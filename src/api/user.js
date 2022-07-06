@@ -3,6 +3,9 @@ import request from '../utils/request'
 const adminList = () => {
   return request({ url: '/captcha', method: 'GET' })
 }
+const loginout = () => {
+  return request({ url: '/logout', method: 'POST' })
+}
 
 const userLogin = (username, password, code, token) => {
   return request({
@@ -12,5 +15,6 @@ const userLogin = (username, password, code, token) => {
 }
 export default {
   adminList,
-  userLogin
+  userLogin,
+  loginout
 }

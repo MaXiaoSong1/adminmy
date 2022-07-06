@@ -1,8 +1,8 @@
 import axios from 'axios'
-
+import store from '@/store/index'
 const instance = axios.create({
   baseURL: 'https://www.markerhub.com/vueadmin-java',
-  timeout: 1000
+  timeout: 5000
 })
 
 // 添加请求拦截器
@@ -21,6 +21,10 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   function (response) {
     // 对响应数据做点什么
+    console.log(response, '111')
+    if (response.headers.authorization) {
+      store.commit('user/setToken', response.headers.authorization)
+    }
     return response
   },
   function (error) {

@@ -32,20 +32,20 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const ruleFormRef = ref(null)
+const token = ref()
 const ruleForm = reactive({
   username: 'test',
-  password: '',
-  code: '',
-  token: ''
+  password: '1234567',
+  code: ''
 })
 
 // 获取验证码 token
 const listData = ref('')
 const list = async () => {
   const res = await UserData.adminList()
+  console.log(res)
   listData.value = res.data.data.captchaImg
-  ruleForm.token = res.data.data.token
-  // console.log(ruleForm.token)
+  token.value = res.data.data.token
 }
 list()
 console.log(listData)
@@ -59,9 +59,12 @@ const adminLogin = async () => {
         ruleForm.username,
         ruleForm.password,
         ruleForm.code,
-        ruleForm.token
+        token.value
       )
-      router.push('/')
+      console.log(res)
+      if (res.data.msg !== '操作成功') return
+      console.log(res, 'sss')
+      router.push('/index')
       console.log(res)
     } else {
       console.log('error submit!')

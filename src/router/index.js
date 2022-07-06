@@ -9,7 +9,29 @@ const routes = [
   {
     path: '/index',
     name: 'index',
-    component: () => import('../layout')
+    component: () => import('../layout'),
+    children: [
+      {
+        path: '/shou',
+        component: () => import('../views/shou')
+      },
+      {
+        path: '/user',
+        component: () => import('../views/user')
+      },
+      {
+        path: '/roles',
+        component: () => import('../views/roles')
+      },
+      {
+        path: '/menus',
+        component: () => import('../views/menus')
+      },
+      {
+        path: '/dicts',
+        component: () => import('../views/dicts')
+      }
+    ]
   }
 ]
 

@@ -1,17 +1,26 @@
 <template>
-  <div class="common-layout">
-    <el-container>
-      <el-aside width="200px">Aside</el-aside>
-      <el-container>
-        <el-header>Header</el-header>
-        <el-main>Main</el-main>
-      </el-container>
-    </el-container>
+  <div id="main-container">
+    <div class="left">
+      <menu-bar></menu-bar>
+    </div>
+    <div class="right">
+      <div class="right_top">
+        <nav-bar class="navbar"></nav-bar>
+        <tags-view class="tagsView"></tags-view>
+      </div>
+      <div class="right_bottom">
+        <app-main></app-main>
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup></script>
-
+<script setup>
+import MenuBar from '@/layout/components/MenuBar'
+import NavBar from '@/layout/components/NavBar'
+import AppMain from '@/layout/components/AppMain'
+import TagsView from '@/layout/components/TagsView'
+</script>
 <style lang="scss" scoped>
 #main-container {
   width: 100%;
@@ -20,7 +29,7 @@
 
   .left {
     width: 210px;
-    background-color: #001529;
+    background-color: #545C64;
   }
 
   .right {
